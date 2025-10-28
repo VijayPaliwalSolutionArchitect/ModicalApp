@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@expo/vector-icons": "^14.0.3",
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-native/new-app-screen": "0.82.1",
     "@react-navigation/bottom-tabs": "^7.6.0",
@@ -17,6 +18,9 @@
     "@react-navigation/stack": "^7.6.0",
     "axios": "^1.13.0",
     "expo": "51.0.39",
+    "expo-constants": "~16.0.2",
+    "expo-linear-gradient": "~13.0.2",
+    "expo-splash-screen": "~0.27.7",
     "react": "19.1.1",
     "react-native": "0.82.1",
     "react-native-gesture-handler": "^2.29.0",
