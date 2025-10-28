@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '../config/theme';
 
 const Input = ({
@@ -38,7 +38,7 @@ const Input = ({
           error && styles.inputContainerError,
         ]}>
         {leftIcon && (
-          <Icon
+          <Ionicons
             name={leftIcon}
             size={20}
             color={isFocused ? COLORS.primary : COLORS.textSecondary}
@@ -60,7 +60,7 @@ const Input = ({
           <TouchableOpacity
             onPress={() => setIsPasswordVisible(!isPasswordVisible)}
             style={styles.rightIcon}>
-            <Icon
+            <Ionicons
               name={isPasswordVisible ? 'eye-off-outline' : 'eye-outline'}
               size={20}
               color={COLORS.textSecondary}
@@ -71,7 +71,7 @@ const Input = ({
           <TouchableOpacity
             onPress={onRightIconPress}
             style={styles.rightIcon}>
-            <Icon name={rightIcon} size={20} color={COLORS.textSecondary} />
+            <Ionicons name={rightIcon} size={20} color={COLORS.textSecondary} />
           </TouchableOpacity>
         )}
       </View>
