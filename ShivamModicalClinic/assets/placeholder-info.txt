@@ -1,0 +1,9 @@
+PLACEHOLDER IMAGES NEEDED
+
+Please add the following images to this folder:
+- icon.png (1024x1024)
+- splash.png (1242x2436) 
+- adaptive-icon.png (1024x1024)
+- favicon.png (48x48)
+
+The app will work in Expo Go without these, but you'll see warnings.
