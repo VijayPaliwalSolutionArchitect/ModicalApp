@@ -99,7 +99,7 @@ const PatientDashboard = ({ navigation }) => {
           
           <View style={[styles.card, SHADOWS.sm]}>
             <View style={styles.todoItem}>
-              <Icon name="calendar" size={20} color={COLORS.primary} />
+              <Ionicons name="calendar" size={20} color={COLORS.primary} />
               <View style={styles.todoContent}>
                 <Text style={styles.todoTitle}>Upcoming Appointment</Text>
                 <Text style={styles.todoSubtitle}>Tomorrow at 10:00 AM - Dr. Ajay Sharma</Text>
@@ -109,7 +109,7 @@ const PatientDashboard = ({ navigation }) => {
 
           <View style={[styles.card, SHADOWS.sm]}>
             <View style={styles.todoItem}>
-              <Icon name="medical" size={20} color={COLORS.accent} />
+              <Ionicons name="medical" size={20} color={COLORS.accent} />
               <View style={styles.todoContent}>
                 <Text style={styles.todoTitle}>Take Medication</Text>
                 <Text style={styles.todoSubtitle}>Aspirin 100mg - After breakfast</Text>
@@ -123,7 +123,7 @@ const PatientDashboard = ({ navigation }) => {
           style={[styles.logoutButton, SHADOWS.sm]}
           onPress={logout}
           activeOpacity={0.7}>
-          <Icon name="log-out-outline" size={20} color={COLORS.danger} />
+          <Ionicons name="log-out-outline" size={20} color={COLORS.danger} />
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
 
