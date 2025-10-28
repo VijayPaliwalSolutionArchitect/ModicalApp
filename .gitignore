@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Backend
+backend/node_modules/
+backend/npm-debug.log*
+backend/.env
+
+# React Native
+ShivamModicalClinic/node_modules/
+ShivamModicalClinic/npm-debug.log*
+ShivamModicalClinic/yarn-debug.log*
+ShivamModicalClinic/yarn-error.log*
+
+# Build artifacts
+ShivamModicalClinic/android/app/build/
+ShivamModicalClinic/android/.gradle/
+ShivamModicalClinic/ios/build/
+ShivamModicalClinic/ios/Pods/
+ShivamModicalClinic/ios/.xcode.env.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+-e 
+# Environment files
+*.env
+*.env.*
