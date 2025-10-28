@@ -31,7 +31,7 @@ const PatientDashboard = ({ navigation }) => {
 
   const StatCard = ({ label, value, icon, color }) => (
     <View style={[styles.statCard, SHADOWS.sm]}>
-      <Icon name={icon} size={28} color={color} />
+      <Ionicons name={icon} size={28} color={color} />
       <Text style={styles.statValue}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
     </View>
@@ -43,7 +43,7 @@ const PatientDashboard = ({ navigation }) => {
       onPress={() => navigation.navigate(route)}
       activeOpacity={0.7}>
       <View style={[styles.quickActionIcon, SHADOWS.sm]}>
-        <Icon name={icon} size={24} color={COLORS.primary} />
+        <Ionicons name={icon} size={24} color={COLORS.primary} />
       </View>
       <Text style={styles.quickActionLabel}>{label}</Text>
     </TouchableOpacity>
