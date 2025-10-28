@@ -66,7 +66,7 @@ const PatientDashboard = ({ navigation }) => {
             <TouchableOpacity
               style={styles.profileButton}
               onPress={() => navigation.navigate('Profile')}>
-              <Icon name="person-outline" size={24} color={COLORS.surface} />
+              <Ionicons name="person-outline" size={24} color={COLORS.surface} />
             </TouchableOpacity>
           </View>
         </LinearGradient>
