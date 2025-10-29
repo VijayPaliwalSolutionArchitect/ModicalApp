@@ -64,6 +64,9 @@ function AppNavigator() {
         // Doctor Stack
         <>
           <Stack.Screen name="DoctorDashboard" component={DoctorDashboard} />
+          <Stack.Screen name="PatientList" component={PatientListScreen} />
+          <Stack.Screen name="TodaySchedule" component={TodayScheduleScreen} />
+          <Stack.Screen name="Notifications" component={NotificationsScreen} />
         </>
       ) : null}
     </Stack.Navigator>
