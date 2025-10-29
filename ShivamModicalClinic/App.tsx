@@ -13,9 +13,17 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 // Context
 import { AuthProvider, useAuth } from './src/context/AuthContext';
 
-// Screens
+// Auth Screens
 import LoginScreen from './src/screens/Auth/LoginScreen';
+
+// Patient Screens
 import PatientDashboard from './src/screens/Patient/PatientDashboard';
+import AppointmentsScreen from './src/screens/Patient/AppointmentsScreen';
+import BookAppointmentScreen from './src/screens/Patient/BookAppointmentScreen';
+import PrescriptionsScreen from './src/screens/Patient/PrescriptionsScreen';
+import NotificationsScreen from './src/screens/Patient/NotificationsScreen';
+
+// Doctor Screens
 import DoctorDashboard from './src/screens/Doctor/DoctorDashboard';
 
 // Theme
@@ -41,19 +49,21 @@ function AppNavigator() {
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
         </>
-      ) : (
-        // Main App Stack
+      ) : user.role === 'patient' ? (
+        // Patient Stack
         <>
-          {user.role === 'patient' ? (
-            <Stack.Screen
-              name="PatientDashboard"
-              component={PatientDashboard}
-            />
-          ) : user.role === 'doctor' ? (
-            <Stack.Screen name="DoctorDashboard" component={DoctorDashboard} />
-          ) : null}
+          <Stack.Screen name="PatientDashboard" component={PatientDashboard} />
+          <Stack.Screen name="Appointments" component={AppointmentsScreen} />
+          <Stack.Screen name="BookAppointment" component={BookAppointmentScreen} />
+          <Stack.Screen name="Prescriptions" component={PrescriptionsScreen} />
+          <Stack.Screen name="Notifications" component={NotificationsScreen} />
         </>
-      )}
+      ) : user.role === 'doctor' ? (
+        // Doctor Stack
+        <>
+          <Stack.Screen name="DoctorDashboard" component={DoctorDashboard} />
+        </>
+      ) : null}
     </Stack.Navigator>
   );
 }
