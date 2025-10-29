@@ -25,6 +25,8 @@ import NotificationsScreen from './src/screens/Patient/NotificationsScreen';
 
 // Doctor Screens
 import DoctorDashboard from './src/screens/Doctor/DoctorDashboard';
+import PatientListScreen from './src/screens/Doctor/PatientListScreen';
+import TodayScheduleScreen from './src/screens/Doctor/TodayScheduleScreen';
 
 // Theme
 import { COLORS } from './src/config/theme';
