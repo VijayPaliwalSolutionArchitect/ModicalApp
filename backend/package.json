@@ -7,7 +7,8 @@
     "dev": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node scripts/seed.js seed",
-    "seed:clean": "node scripts/seed.js clean"
+    "seed:clean": "node scripts/seed.js clean",
+    "seed:full": "node scripts/comprehensiveSeed.js"
   },
   "keywords": [],
   "author": "",
