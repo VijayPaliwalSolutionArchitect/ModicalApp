@@ -88,7 +88,11 @@ const PatientDashboard = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
         {/* Header */}
         <LinearGradient
           colors={COLORS.gradientPrimary}
@@ -102,15 +106,15 @@ const PatientDashboard = ({ navigation }) => {
             </View>
             <TouchableOpacity
               style={styles.profileButton}
-              onPress={() => navigation.navigate('Profile')}>
-              <Ionicons name="person-outline" size={24} color={COLORS.surface} />
+              onPress={() => navigation.navigate('Notifications')}>
+              <Ionicons name="notifications-outline" size={24} color={COLORS.surface} />
             </TouchableOpacity>
           </View>
         </LinearGradient>
 
         {/* Stats Grid */}
         <View style={styles.statsContainer}>
-          {stats.map((stat, index) => (
+          {statsData.map((stat, index) => (
             <StatCard key={index} {...stat} />
           ))}
         </View>
@@ -125,35 +129,37 @@ const PatientDashboard = ({ navigation }) => {
           </View>
         </View>
 
-        {/* Today's To-Do */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Today's To-Do</Text>
-            <TouchableOpacity>
-              <Text style={styles.seeAll}>See All</Text>
-            </TouchableOpacity>
-          </View>
-          
-          <View style={[styles.card, SHADOWS.sm]}>
-            <View style={styles.todoItem}>
-              <Ionicons name="calendar" size={20} color={COLORS.primary} />
-              <View style={styles.todoContent}>
-                <Text style={styles.todoTitle}>Upcoming Appointment</Text>
-                <Text style={styles.todoSubtitle}>Tomorrow at 10:00 AM - Dr. Ajay Sharma</Text>
-              </View>
+        {/* Upcoming Appointments */}
+        {upcomingAppointments.length > 0 && (
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>Upcoming Appointments</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Appointments')}>
+                <Text style={styles.seeAll}>See All</Text>
+              </TouchableOpacity>
             </View>
-          </View>
-
-          <View style={[styles.card, SHADOWS.sm]}>
-            <View style={styles.todoItem}>
-              <Ionicons name="medical" size={20} color={COLORS.accent} />
-              <View style={styles.todoContent}>
-                <Text style={styles.todoTitle}>Take Medication</Text>
-                <Text style={styles.todoSubtitle}>Aspirin 100mg - After breakfast</Text>
+            
+            {upcomingAppointments.map((apt, index) => (
+              <View key={index} style={[styles.card, SHADOWS.sm]}>
+                <View style={styles.todoItem}>
+                  <Ionicons name="calendar" size={20} color={COLORS.primary} />
+                  <View style={styles.todoContent}>
+                    <Text style={styles.todoTitle}>
+                      {apt.doctorId?.name?.display || 'Doctor Appointment'}
+                    </Text>
+                    <Text style={styles.todoSubtitle}>
+                      {new Date(apt.slot.start).toLocaleDateString('en-IN')} at{' '}
+                      {new Date(apt.slot.start).toLocaleTimeString('en-IN', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </Text>
+                  </View>
+                </View>
               </View>
-            </View>
+            ))}
           </View>
-        </View>
+        )}
 
         {/* Logout Button */}
         <TouchableOpacity
