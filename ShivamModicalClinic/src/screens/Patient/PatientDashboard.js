@@ -16,19 +16,54 @@ import { COLORS, TYPOGRAPHY, SPACING, SHADOWS, BORDER_RADIUS } from '../../confi
 
 const PatientDashboard = ({ navigation }) => {
   const { user, logout } = useAuth();
+  const [stats, setStats] = useState({
+    appointments: 0,
+    medications: 0,
+    allergies: 0,
+    records: 0
+  });
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const stats = [
-    { label: 'Appointments', value: '2', icon: 'calendar-outline', color: COLORS.primary },
-    { label: 'Medications', value: '3', icon: 'medical-outline', color: COLORS.accent },
-    { label: 'Allergies', value: '1', icon: 'alert-circle-outline', color: COLORS.warning },
-    { label: 'Records', value: '8', icon: 'document-text-outline', color: COLORS.info },
+  useEffect(() => {
+    loadDashboardData();
+  }, []);
+
+  const loadDashboardData = async () => {
+    try {
+      // Load stats
+      const statsData = await statsService.getPatientStats();
+      setStats(statsData);
+
+      // Load upcoming appointments
+      const appointments = await appointmentService.getAppointments({ 
+        status: 'scheduled,confirmed'
+      });
+      setUpcomingAppointments(appointments.slice(0, 2));
+    } catch (error) {
+      console.error('Error loading dashboard data:', error);
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    loadDashboardData();
+  };
+
+  const statsData = [
+    { label: 'Appointments', value: stats.appointments, icon: 'calendar-outline', color: COLORS.primary },
+    { label: 'Medications', value: stats.medications, icon: 'medical-outline', color: COLORS.accent },
+    { label: 'Allergies', value: stats.allergies, icon: 'alert-circle-outline', color: COLORS.warning },
+    { label: 'Records', value: stats.records, icon: 'document-text-outline', color: COLORS.info },
   ];
 
   const quickActions = [
     { label: 'Book Appointment', icon: 'add-circle-outline', route: 'BookAppointment' },
-    { label: 'Upload Report', icon: 'cloud-upload-outline', route: 'UploadReport' },
-    { label: 'Request Rx', icon: 'receipt-outline', route: 'Prescriptions' },
-    { label: 'Call Clinic', icon: 'call-outline', route: 'ContactClinic' },
+    { label: 'Appointments', icon: 'calendar-outline', route: 'Appointments' },
+    { label: 'Prescriptions', icon: 'receipt-outline', route: 'Prescriptions' },
+    { label: 'Notifications', icon: 'notifications-outline', route: 'Notifications' },
   ];
 
   const StatCard = ({ label, value, icon, color }) => (
