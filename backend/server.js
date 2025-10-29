@@ -45,7 +45,10 @@ app.get('/', (req, res) => {
       doctors: '/api/doctors',
       patients: '/api/patients',
       appointments: '/api/appointments',
-      prescriptions: '/api/prescriptions'
+      prescriptions: '/api/prescriptions',
+      medicalRecords: '/api/medical-records',
+      notifications: '/api/notifications',
+      stats: '/api/stats'
     }
   });
 });
